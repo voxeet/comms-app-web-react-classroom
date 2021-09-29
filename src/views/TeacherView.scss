@@ -1,0 +1,21 @@
+.teacher-view {
+  height: 100%;
+  width: 100%;
+  background: rgba(49, 49, 49, 0.342);
+  color: white;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+  overflow: hidden;
+
+  &__top-controls {
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+    padding: 0.7rem 1rem;
+  }
+}
+
+.teacher-students-row .participant-grid-item {
+  cursor: pointer;
+}

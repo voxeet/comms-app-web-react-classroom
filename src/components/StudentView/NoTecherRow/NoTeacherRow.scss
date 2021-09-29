@@ -1,0 +1,19 @@
+@import '../../../styles/colors.scss';
+
+.no-teacher-row {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__inner {
+    height: 100%;
+    width: 50%;
+    border: 2px solid $primary-dark-3;
+    background-color: #1b1b2780;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+  }
+}

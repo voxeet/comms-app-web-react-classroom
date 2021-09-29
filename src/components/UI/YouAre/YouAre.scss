@@ -1,0 +1,16 @@
+.you-are {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  &__main-text {
+  }
+
+  &__role-text {
+    font-weight: bold;
+  }
+
+  &__message {
+    font-size: 25px;
+  }
+}

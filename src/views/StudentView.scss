@@ -1,0 +1,17 @@
+.student-view {
+  height: 100%;
+  width: 100%;
+  color: black;
+  color: white;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+
+  &__top-controls {
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+    padding: 0.7rem 1rem;
+    // box-sizing: border-box;
+  }
+}
