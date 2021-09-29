@@ -102,5 +102,5 @@ For the Classroom App, the data model in Firebase looks like this:
 After all credentials are set, you can run with:
 ```js
 npm install
-npm start
+npm run start
 ```
