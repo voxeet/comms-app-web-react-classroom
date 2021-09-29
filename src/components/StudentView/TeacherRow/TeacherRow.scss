@@ -1,0 +1,51 @@
+@import '../../../styles/colors.scss';
+
+.teacher-row-student-view {
+  height: 50%;
+  position: relative;
+  display: flex;
+  flex-flow: row;
+
+  &__left {
+    width: 40%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+
+    .teacher {
+      // border-radius: 10px;
+    }
+  }
+
+  &__right {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(
+      98.54% 310.54% at 51.09% 52.2%,
+      #1b1b27 0%,
+      #3d4484 49.48%,
+      #1b1b27 100%
+    );
+    margin: 1rem;
+    border-radius: 10px;
+    // border: 1px solid green;
+
+    .screenshare-container {
+      // width: 90%;
+      // max-height: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      position: relative;
+      padding: 0.5rem;
+
+      #teacher-screenshare-object {
+        // display: none;
+        // object-fit: cover;
+      }
+    }
+  }
+}

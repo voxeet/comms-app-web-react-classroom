@@ -1,0 +1,74 @@
+@import '../../../styles/colors.scss';
+
+.participant-grid-item {
+  // width: 10rem;
+  // height: 10rem;
+  width: 186px;
+  height: 186px;
+  margin: 0.33rem;
+  border-radius: 4px;
+  position: relative;
+  background-color: $primary-dark-3;
+  box-sizing: border-box;
+
+  /* Create this additional element for the border, so the video is not resized. */
+  .outline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+  }
+
+  &:hover .outline {
+    border: 2px solid $primary-light;
+  }
+
+  &.called-on .outline {
+    border: 2px solid $green;
+  }
+
+  &__video {
+    border-radius: inherit;
+  }
+
+  &__name {
+    position: absolute;
+    top: 0;
+    transform: translateY(-130%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+  }
+
+  &__no-video-icon-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .call-on-notice,
+  .called-on-notice {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 190px;
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+  }
+  .called-on-notice {
+    color: $green;
+  }
+  .call-on-notice {
+    display: none;
+    color: $primary-light;
+  }
+  &:hover .call-on-notice {
+    display: block;
+  }
+}

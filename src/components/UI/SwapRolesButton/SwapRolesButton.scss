@@ -1,0 +1,17 @@
+@import '../../../styles/colors.scss';
+.swap-roles-button {
+  user-select: none;
+  cursor: pointer;
+  background-color: $primary-dark-3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+}

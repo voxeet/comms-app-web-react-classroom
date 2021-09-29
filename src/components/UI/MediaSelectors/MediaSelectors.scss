@@ -1,0 +1,77 @@
+@import '../../../styles/colors.scss';
+
+.media-selectors {
+  display: flex;
+  flex-flow: column;
+  position: relative;
+  // width: 22rem;
+  &__icon {
+    // width: 2rem;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 0.5rem;
+    z-index: 11;
+  }
+
+  &__click-target {
+    position: fixed;
+    z-index: 9;
+    // background-color: aquamarine;
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+
+  &__menu {
+    position: absolute;
+    z-index: 10;
+    border: 1px solid #222230;
+    border-radius: 4px;
+    background-color: #222230;
+    padding: 1rem;
+    width: 22rem;
+    bottom: 0;
+    right: 0;
+    transform: translateY(100%);
+  }
+
+  .media-dropdown {
+    margin-bottom: 1rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.is-open {
+      .Dropdown-control {
+        border-radius: 10px 10px 0px 0px;
+      }
+    }
+
+    .Dropdown-control {
+      background-color: $primary-dark-3;
+      color: white;
+      padding: 5px 52px 5px 10px;
+      border-radius: 10px;
+    }
+
+    .Dropdown-menu {
+      background-color: $primary-dark-3;
+      color: white;
+      border-radius: 0px 0px 10px 10px;
+    }
+
+    .Dropdown-option {
+      color: white;
+
+      &:hover {
+        background-color: $primary-dark;
+      }
+
+      &.is-selected {
+        color: $primary-dark-3;
+      }
+    }
+  }
+}
