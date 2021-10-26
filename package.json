@@ -20,8 +20,6 @@
     "build": "PUBLIC_URL=./ react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "rsync -rvt --delete ./build/ deploy@studio.stamen.com:/var/www/com.stamen.studio/dolby-io-map-demos/show/classroom-app",
-    "staging": "PUBLIC_URL=./ npm run build --mode staging && npm run deploy",
     "prettier": "prettier --write \"src/**/*.+(js|json|css|scss|md)\""
   },
   "eslintConfig": {
