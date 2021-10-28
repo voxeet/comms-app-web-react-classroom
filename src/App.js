@@ -16,7 +16,6 @@ import {
 } from './utils/firebaseUtils';
 import TeacherView from './views/TeacherView';
 import StudentView from './views/StudentView';
-import MediaSelectors from './components/UI/MediaSelectors/MediaSelectors';
 import { useKillZombies } from './useKillZombies';
 import './App.scss';
 
@@ -328,14 +327,7 @@ function App() {
     />
   );
 
-  return (
-    <div className="app">
-      <div className="utility-bar">
-        <MediaSelectors />
-      </div>
-      {view}
-    </div>
-  );
+  return <div className="app">{view}</div>;
 }
 
 export default App;

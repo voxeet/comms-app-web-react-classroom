@@ -2,9 +2,8 @@
 
 .media-selectors {
   display: flex;
-  flex-flow: column;
   position: relative;
-  // width: 22rem;
+  align-items: center;
   &__icon {
     // width: 2rem;
     cursor: pointer;
@@ -32,9 +31,8 @@
     background-color: #222230;
     padding: 1rem;
     width: 22rem;
-    bottom: 0;
-    right: 0;
-    transform: translateY(100%);
+    bottom: 70px;
+    right: -316px;
   }
 
   .media-dropdown {
@@ -73,5 +71,18 @@
         color: $primary-dark-3;
       }
     }
+  }
+  .link-copied-tooltip {
+    background: #50b06c;
+    border-radius: 2px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    width: max-content;
+    top: -25px;
+    right: -11px;
+    padding: 3px 6px;
+    transition: opacity 0.5s;
+    pointer-events: none;
   }
 }
