@@ -22,7 +22,7 @@ const styles = {
 
 export default function CallToActionButton() {
   const handleClick = useCallback(() => {
-    window.open('https://dolby.io/', '_blank');
+    window.open('https://docs.dolby.io/communications-apis/docs/classroom-with-teacher-controls-web-app', '_blank');
   }, []);
 
   return (
