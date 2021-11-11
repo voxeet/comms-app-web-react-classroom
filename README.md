@@ -1,3 +1,4 @@
+
 # Dolby.io Classroom App
 
 This application demonstrates an educational classroom application.
@@ -36,6 +37,7 @@ const consumerKey = '<DOLBYIO_COMMUNICATIONS_API>';
 const consumerSecret = '<DOLBYIO_COMMUNICATIONS_SECRET>';
 ```
 with the credentials from your application, found [here](https://dolby.io/signin).
+Note the initialization method shown here is suitable for localhost testing only, please refer to our documentation for [initialization](https://docs.dolby.io/communications-apis/docs/initializing-javascript) best practices.    
 
 ## Firebase Setup
 
