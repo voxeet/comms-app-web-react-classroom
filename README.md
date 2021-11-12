@@ -51,6 +51,21 @@ Firebase credentials are defined in `src/providers/Firebase.js`.
 
 4. Copy the details provided in `firebaseConfig` on this screen and paste them into the `src/providers/Firebase.js` file.
 
+Essential you can replace the entire object:
+```
+const firebaseConfig = {
+  apiKey: "<API_KEY>",
+  authDomain: "<PROJECT_ID>.firebaseapp.com",
+  databaseURL: "<DATABASE_ID>.firebaseio.com",
+  projectId: "<PROJECT_ID>",
+  storageBucket: "<BUCKET>.appspot.com",
+  messagingSenderId: "<MESSAGING_SENDER_ID>",
+  appId: "<APP_ID>",
+  measurementId: "<MEASUREMENT_ID>"
+};
+```
+With your own config object.
+
 * If you try running the app at this point, you'll get an error that looks like this: `@firebase/database: FIREBASE WARNING: Firebase error. Please ensure that you spelled the name of your Firebase correctly`. This is because we have not set up the Realtime database yet.
 
 ## Firebase Real-Time Database Setup
