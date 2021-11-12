@@ -51,7 +51,7 @@ Firebase credentials are defined in `src/providers/Firebase.js`.
 
 4. Copy the details provided in `firebaseConfig` on this screen and paste them into the `src/providers/Firebase.js` file.
 
-Essential you can replace the entire object:
+You can replace the entire firebaseConfig object:
 ```
 const firebaseConfig = {
   apiKey: "<API_KEY>",
