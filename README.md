@@ -64,7 +64,7 @@ const firebaseConfig = {
   measurementId: "<MEASUREMENT_ID>"
 };
 ```
-With your own config object.
+With your config object that you copied from the Firebase console.
 
 * If you try running the app at this point, you'll get an error that looks like this: `@firebase/database: FIREBASE WARNING: Firebase error. Please ensure that you spelled the name of your Firebase correctly`. This is because we have not set up the Realtime database yet.
 
