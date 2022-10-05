@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-import { conference, session } from '@voxeet/voxeet-web-sdk';
+import VoxeetSDK from '@voxeet/voxeet-web-sdk';
 import {
   createConference,
   joinConference,
@@ -62,7 +62,7 @@ function App() {
       if (thisParticipentIndex === -1) {
         let nameToAdd, isYou;
         // test to see if the id of this person is you - if so, amend the display name
-        if (session.participant.id === participant.id) {
+        if (VoxeetSDK.session.participant.id === participant.id) {
           isYou = true;
           nameToAdd = `${participant.info.name} (you)`;
         } else {
@@ -264,7 +264,7 @@ function App() {
           return joinConference(conf);
         })
         .then((newClassRoom) => {
-          const newSelfId = session.participant.id;
+          const newSelfId = VoxeetSDK.session.participant.id;
           setSelfId(newSelfId);
           setClassRoom(newClassRoom);
           subscribeToClassRoomUpdates({
@@ -277,16 +277,16 @@ function App() {
   }, [cell, handleClassRoomUpdate]);
 
   useEffect(() => {
-    conference.on('streamAdded', streamUpdatedCallback);
-    conference.on('streamUpdated', streamUpdatedCallback);
-    conference.on('streamRemoved', streamRemovedCallback);
-    conference.on('participantUpdated', handleParticipantStatusChange);
+    VoxeetSDK.conference.on('streamAdded', streamUpdatedCallback);
+    VoxeetSDK.conference.on('streamUpdated', streamUpdatedCallback);
+    VoxeetSDK.conference.on('streamRemoved', streamRemovedCallback);
+    VoxeetSDK.conference.on('participantUpdated', handleParticipantStatusChange);
 
     return () => {
-      conference.off('streamAdded', streamUpdatedCallback);
-      conference.off('streamUpdated', streamUpdatedCallback);
-      conference.off('streamRemoved', streamRemovedCallback);
-      conference.off('participantUpdated', handleParticipantStatusChange);
+      VoxeetSDK.conference.off('streamAdded', streamUpdatedCallback);
+      VoxeetSDK.conference.off('streamUpdated', streamUpdatedCallback);
+      VoxeetSDK.conference.off('streamRemoved', streamRemovedCallback);
+      VoxeetSDK.conference.off('participantUpdated', handleParticipantStatusChange);
     };
   }, [
     participantList,
