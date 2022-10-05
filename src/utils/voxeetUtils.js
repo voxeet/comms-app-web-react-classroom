@@ -1,5 +1,5 @@
 import {
-  initialize,
+  initializeToken,
   session,
   conference,
   mediaDevice,
@@ -10,12 +10,26 @@ import {
   getClassroomDataAtCell,
 } from './firebaseUtils';
 
-// Enter your credentials from Dolby.io here:
-// https://dolby.io/dashboard/applications/summary
-const consumerKey = '<DOLBYIO_COMMUNICATIONS_API>';
-const consumerSecret = '<DOLBYIO_COMMUNICATIONS_SECRET>';
+const token = prompt("Enter API Token Here:\nSee https://dashboard.dolby.io/ for help.")
 
-initialize(consumerKey, consumerSecret);
+const initializeSDK = (accessToken) => {
+  const token = accessToken.split('.')[1];
+  const jwt = JSON.parse(window.atob(token));
+  let accessTokenExpiration = new Date(jwt.exp * 1000);
+  if (accessTokenExpiration.getTime() <= new Date().getTime()) {
+      alert('The access token you have provided has expired.');
+      return;
+  }
+
+  console.group('Access Token');
+  console.log(`\x1B[94mInitialize the SDK with the Access Token: \x1B[m${accessToken}`);
+  console.log(`Access Token Expiration: ${accessTokenExpiration}`);
+  console.groupEnd();
+
+  initializeToken(accessToken, () => new Promise((resolve) => resolve(accessToken)));
+};
+
+initializeSDK(token);
 
 /**
  * This function either creates a new session if there isn't anyone in one with that alias
