@@ -283,10 +283,10 @@ function App() {
     VoxeetSDK.conference.on('participantUpdated', handleParticipantStatusChange);
 
     return () => {
-      VoxeetSDK.conference.off('streamAdded', streamUpdatedCallback);
-      VoxeetSDK.conference.off('streamUpdated', streamUpdatedCallback);
-      VoxeetSDK.conference.off('streamRemoved', streamRemovedCallback);
-      VoxeetSDK.conference.off('participantUpdated', handleParticipantStatusChange);
+      VoxeetSDK.conference.removeListener('streamAdded', streamUpdatedCallback);
+      VoxeetSDK.conference.removeListener('streamUpdated', streamUpdatedCallback);
+      VoxeetSDK.conference.removeListener('streamRemoved', streamRemovedCallback);
+      VoxeetSDK.conference.removeListener('participantUpdated', handleParticipantStatusChange);
     };
   }, [
     participantList,
