@@ -1,21 +1,30 @@
-import {
-  initialize,
-  session,
-  conference,
-  mediaDevice,
-} from '@voxeet/voxeet-web-sdk';
+import VoxeetSDK from '@voxeet/voxeet-web-sdk';
 
 import {
   setupNewClassroomAtCell,
   getClassroomDataAtCell,
 } from './firebaseUtils';
 
-// Enter your credentials from Dolby.io here:
-// https://dolby.io/dashboard/applications/summary
-const consumerKey = '<DOLBYIO_COMMUNICATIONS_API>';
-const consumerSecret = '<DOLBYIO_COMMUNICATIONS_SECRET>';
+const token = prompt("Enter API Token Here:\nSee https://dashboard.dolby.io/ for help.")
 
-initialize(consumerKey, consumerSecret);
+const initializeSDK = (accessToken) => {
+  const token = accessToken.split('.')[1];
+  const jwt = JSON.parse(window.atob(token));
+  let accessTokenExpiration = new Date(jwt.exp * 1000);
+  if (accessTokenExpiration.getTime() <= new Date().getTime()) {
+      alert('The access token you have provided has expired.');
+      return;
+  }
+
+  console.group('Access Token');
+  console.log(`\x1B[94mInitialize the SDK with the Access Token: \x1B[m${accessToken}`);
+  console.log(`Access Token Expiration: ${accessTokenExpiration}`);
+  console.groupEnd();
+
+ VoxeetSDK.initializeToken(accessToken, () => new Promise((resolve) => resolve(accessToken)));
+};
+
+initializeSDK(token);
 
 /**
  * This function either creates a new session if there isn't anyone in one with that alias
@@ -26,7 +35,7 @@ initialize(consumerKey, consumerSecret);
  */
 const createConference = (alias) => {
   return new Promise((resolve, reject) => {
-    conference
+    VoxeetSDK.conference
       .create({ alias })
       .then((cellConference) => {
         resolve(cellConference);
@@ -39,12 +48,12 @@ const createConference = (alias) => {
 };
 
 const getConference = () => {
-  return conference;
+  return VoxeetSDK.conference;
 };
 
 // conference in/out
 const joinConference = async (conf) => {
-  conference.join(conf, {
+  VoxeetSDK.conference.join(conf, {
     constraints: {
       audio: false,
       video: true,
@@ -65,13 +74,13 @@ const joinConference = async (conf) => {
 };
 
 const leaveConference = () => {
-  conference.leave();
+  VoxeetSDK.conference.leave();
 };
 
 // video
 const startVideo = () => {
-  conference
-    .startVideo(session.participant)
+  VoxeetSDK.LocalVideo
+    .start()
     .then(() => {})
     .catch((err) => {
       console.error(err);
@@ -79,8 +88,8 @@ const startVideo = () => {
 };
 
 const stopVideo = () => {
-  conference
-    .stopVideo(session.participant)
+  VoxeetSDK.LocalVideo
+    .stop()
     .then(() => {})
     .catch((err) => {
       console.error(err);
@@ -89,8 +98,8 @@ const stopVideo = () => {
 
 // audio
 const startAudio = () => {
-  conference
-    .startAudio(session.participant)
+  VoxeetSDK.LocalAudio
+    .start()
     .then(() => {})
     .catch((err) => {
       console.error(err);
@@ -98,8 +107,8 @@ const startAudio = () => {
 };
 
 const stopAudio = () => {
-  conference
-    .stopAudio(session.participant)
+  VoxeetSDK.LocalAudio
+    .stop()
     .then(() => {})
     .catch((err) => {
       console.error(err);
@@ -109,8 +118,8 @@ const stopAudio = () => {
 // media devices
 const getAudioDevices = () => {
   return new Promise((resolve, reject) => {
-    mediaDevice
-      .enumerateAudioDevices()
+    VoxeetSDK.mediaDevice
+      .enumerateAudioInputDevices()
       .then((value) => {
         resolve(value);
       })
@@ -122,8 +131,8 @@ const getAudioDevices = () => {
 
 const getVideoDevices = () => {
   return new Promise((resolve, reject) => {
-    mediaDevice
-      .enumerateVideoDevices()
+    VoxeetSDK.mediaDevice
+      .enumerateVideoInputDevices()
       .then((value) => {
         resolve(value);
       })
@@ -134,35 +143,35 @@ const getVideoDevices = () => {
 };
 
 const changeAudioDevice = (deviceId) => {
-  mediaDevice
+  VoxeetSDK.mediaDevice
     .selectAudioInput(deviceId)
     .then(() => {})
     .catch((err) => console.error);
 };
 
 const changeVideoDevice = (deviceId) => {
-  mediaDevice
+  VoxeetSDK.mediaDevice
     .selectVideoInput(deviceId)
     .then(() => {})
     .catch((err) => console.error);
 };
 
 const startScreenShare = () => {
-  conference
+  VoxeetSDK.conference
     .startScreenShare()
     .then(() => {})
     .catch((e) => {});
 };
 
 const stopScreenShare = () => {
-  conference
+  VoxeetSDK.conference
     .stopScreenShare()
     .then(() => {})
     .catch((e) => {});
 };
 
 const getParticipantAudioLevel = (p, callback) => {
-  conference.audioLevel(p, callback);
+  VoxeetSDK.conference.audioLevel(p, callback);
 };
 
 export {
