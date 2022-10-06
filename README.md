@@ -21,22 +21,8 @@ cd meet-dolbyio-classroom
 
 ## Dolby.io Setup
 
-Dolby.io credentials are defined in `src/utils/voxeetUtils.js`.
+Dolby.io credentials are asked in a `prompt()` popup upon loading the page. You can access the requested token from your dashboard by following [this documentation](https://docs.dolby.io/communications-apis/docs/guides-app-credentials).
 
-Find your **Consumer Key** and **Consumer Secret** by following these steps:
-
-1. Select the `SIGN IN` link located in the upper right corner of the Dolby.io page. Log in using your email and password.
-2. Click the `DASHBOARD` link visible in the upper right corner of the website.
-3. Select your application from the `APPLICATIONS` category located on the left side menu.
-4. Select the `API Keys` category from the drop-down menu visible under your application.
-5. In the `Communications APIs` section, you can access your `Consumer Key` and `Consumer Secret`.
-
-Enter your Dolby.io Credentials in `/src/utils/voxeetUtils.js`. That is, replace the placeholder text in:
-```js
-const consumerKey = '<DOLBYIO_COMMUNICATIONS_API>';
-const consumerSecret = '<DOLBYIO_COMMUNICATIONS_SECRET>';
-```
-with the credentials from your application, found [here](https://dolby.io/signin).
 Note the initialization method shown here is suitable for localhost testing only, please refer to our documentation for [initialization](https://docs.dolby.io/communications-apis/docs/initializing-javascript) best practices.    
 
 ## Firebase Setup
