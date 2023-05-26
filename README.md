@@ -92,6 +92,9 @@ npm install
 npm run start
 ```
 
+This is what the result looks like:
+![screenshot-of-running-app](https://dolby.io/wp-content/uploads/2021/11/classroom-screenshare-1024x680.png)
+
 # Learn More
 
 - [Building a Classroom App](https://dolby.io/blog/building-a-classroom-app-with-moderation-and-assigned-seats-using-firebase/)
